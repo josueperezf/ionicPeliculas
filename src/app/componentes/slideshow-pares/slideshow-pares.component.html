@@ -1,0 +1,21 @@
+<ion-slides [options]="slideOpt">
+  <!-- el pipe pares, lo que hacer es: recibe un arreglo, y retorna un arreglo que contiene varios arreglos, cada uno de ellos tiene ' dos elementos'  -->
+  <ion-slide *ngFor="let par of peliculas | pares">
+    <ion-row>
+
+      <ion-col size="12" *ngFor="let pelicula of par">
+        <ion-card mode="md"  (click)="verDetalle(pelicula.id)">
+          <ion-img [src]="pelicula.poster_path | imagen" class="poster"></ion-img>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-slide>
+
+  <!-- para agregar al final un boton que permita cargar mas elementos al slides -->
+  <ion-slide class="slide-mas">
+    <ion-button expand="full" class="btn-mas" size="large" (click)="onClick()" >
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+  </ion-slide>
+</ion-slides>
